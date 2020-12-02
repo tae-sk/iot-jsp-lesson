@@ -10,6 +10,7 @@
 </head>
 <h3>SELECT</h3>
 <body>
+<table border="1">
 <%
 	try {
 		Class.forName("oracle.jdbc.OracleDriver");
@@ -23,7 +24,7 @@
 		}
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT PCODE, PNAME, COST FROM TBL_PIZZA_01");
-		%><table border="1">
+		%>
 			<tr>
 				<td>피자 코드</td>
 				<td>피자 이름</td>
@@ -39,7 +40,6 @@
 			<%
 			// out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getInt(3));
 		}
-		%></table><%
 		stmt.close();
 		conn.close();
 	}
@@ -47,5 +47,6 @@
 		e.printStackTrace();
 	}
 %>
+</table>
 </body>
 </html>

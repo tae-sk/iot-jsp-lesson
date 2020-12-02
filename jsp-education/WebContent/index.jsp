@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>title</title>
+<link rel="stylesheet" href="css/css.css">
 </head>
 <%
 String section = request.getParameter("section") != null ? request.getParameter("section") : "";
