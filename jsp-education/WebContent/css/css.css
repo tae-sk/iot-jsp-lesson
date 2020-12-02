@@ -1,0 +1,15 @@
+@charset "UTF-8";
+header {
+	width: 100%;
+	background: #666;
+}
+
+footer {
+	width: 100%;
+	background: #999;
+}
+
+nav {
+	width: 100%;
+	background: #666;
+}
