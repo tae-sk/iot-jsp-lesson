@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이정훈</title>
+<title></title>
 </head>
 <%
 String section = request.getParameter("section") != null ? request.getParameter("section") : "";
@@ -12,7 +12,6 @@ String section = request.getParameter("section") != null ? request.getParameter(
 <body>
 	<%@ include file="static/header.jsp" %>
 	<%@ include file="static/nav.jsp" %>
-	<%@ include file="static/footer.jsp" %>
 	
 	<%
 	switch(section){
@@ -26,5 +25,7 @@ String section = request.getParameter("section") != null ? request.getParameter(
 		%><%@include file="static/index.jsp" %><%
 	}
 	%>
+	
+	<%@ include file="static/footer.jsp" %>
 </body>
 </html>
