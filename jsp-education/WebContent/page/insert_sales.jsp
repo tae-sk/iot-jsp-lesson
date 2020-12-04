@@ -10,6 +10,25 @@
 %>
 
 <script>
+function submit_form() {
+	if (document.input_form.sale_code.value === "") {
+		alert("판매 코드를 입력해야 합니다");
+		document.input_form.sale_code.focus();
+		return;
+	}
+	if (document.input_form.sale_date.value === "") {
+		alert("판매 일자를 입력해야 합니다");
+		document.input_form.sale_date.focus();
+		return;
+	}
+	if (document.input_form.sale_amount.value === "") {
+		alert("판매 개수를 입력해야 합니다");
+		document.input_form.sale_amount.focus();
+		return;
+	}
+	alert("정상적으로 처리되었습니다!");
+	document.input_form.submit();
+}
 function reset_form() {
 	document.input_form.reset();
 }
@@ -29,7 +48,7 @@ function reset_form() {
 						ResultSet rs_shop = stmt_shop.executeQuery("SELECT SCODE, SNAME FROM TBL_SHOP_01");
 						while (rs_shop.next()) {
 							%>
-								<option value="<%=rs_shop.getString(1) %>"> <%=rs_shop.getString(2) %></option>
+								<option value="<%=rs_shop.getString(1) %>"> [<%=rs_shop.getString(1) %>] <%=rs_shop.getString(2) %></option>
 							<%
 						}
 					%>
@@ -49,7 +68,7 @@ function reset_form() {
 						ResultSet rs_pizza = stmt_pizza.executeQuery("SELECT PCODE, PNAME FROM TBL_PIZZA_01");
 						while (rs_pizza.next()) {
 							%>
-								<option value="<%=rs_pizza.getString(1) %>"> <%=rs_pizza.getString(2) %></option>
+								<option value="<%=rs_pizza.getString(1) %>"> [<%=rs_pizza.getString(1) %>] <%=rs_pizza.getString(2) %></option>
 							<%
 						}
 					%>
@@ -62,7 +81,7 @@ function reset_form() {
 		</tr>
 		<tr>
 			<td colspan="2" >
-				<input type="submit" value="동록하기" />
+				<input type="button" value="동록하기" onclick="submit_form()" />
 				<input type="button" value="다시쓰기" onclick="reset_form()" />
 			</td>
 		</tr>
