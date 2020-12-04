@@ -11,11 +11,11 @@ function reset_form() {
 	<table border="1">
 		<tr>
 			<td>피자 코드</td>
-			<td><input type="text" name="pizza_name" /></td>
+			<td><input type="text" name="pizza_code" /></td>
 		</tr>
 		<tr>
 			<td>피자 이름</td>
-			<td><input type="text" name="pizza_code" /></td>
+			<td><input type="text" name="pizza_name" /></td>
 		</tr>
 		<tr>
 			<td>피자 가격</td>

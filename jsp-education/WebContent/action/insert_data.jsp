@@ -19,10 +19,14 @@ try {
 	
 	ResultSet rs = stmt.executeQuery(String.format(query, pizza_code, pizza_name, cost));
 	
+	conn.commit();
+	
 	stmt.close();
 	conn.close();
 }
 catch (Exception e) {
 	e.printStackTrace();
 }
+
+response.sendRedirect("../index.jsp");
 %>
