@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.sql.*" %>
 <h3>통합 매출 내역 조회</h3>
+<table border="1">
 <tr>
 	<td>판매 ID</td>
 	<td>상품명</td>
@@ -13,15 +14,15 @@
 try {
 	Class.forName("oracle.jdbc.OracleDriver");
 	Connection conn = DriverManager.getConnection
-	("jdbc:oracle:thin:@//DESKTOP-PSVBU1F:51613/xe", "taeseok", "1234");
+	("jdbc:oracle:thin:@//localhost:1521/xe", "taeseok", "1234");
 	
 	Statement stmt = conn.createStatement();
-	String query = "SELECT" +
-	               "SALE.SALE_ID, PRODUCT.NAME, SALE.PURCHASE_DATE, SALE.SALE_PRICE, SALE.AMOUNT" +
-	               "FROM" +
-	           	   "	SALE,PRODUCT" +
+	String query = "SELECT " +
+	               "SALE.SALE_ID, PRODUCT.NAME, SALE.PURCHASE_DATE, SALE.SALE_PRICE, SALE.AMOUNT " +
+	               "FROM " +
+	           	   "	SALE,PRODUCT " +
 	               "WHERE " +
-	           	   "	SALE.PRODUCT_ID = PRODUCT.PRODUCT_ID";
+	           	   "	SALE.PRODUCT_ID = PRODUCT.PRODUCT_ID ";
 	ResultSet rs = stmt.executeQuery(query);
 	
 	while(rs.next()){
@@ -43,3 +44,4 @@ try {
 	e.printStackTrace();
 }
 %>
+</table>
