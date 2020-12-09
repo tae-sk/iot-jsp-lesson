@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="java.sql.*" %>
-<h3>판매 등록</h3>
+<h3>오디션 등록</h3>
 <%
 try {
 	Class.forName("oracle.jdbc.OracleDriver");
@@ -17,7 +17,7 @@ try {
 		<td>참가번호</td>
 		<td>
 		<input type="text" name="player">
-		
+		<b>*참가번호는 (A000)4자리입니다.</b>
 		<%-- <select name="artist_id">
 			<% 
 			String query = "SELECT PRODUCT_ID,NAME FROM PRODUCT";

@@ -1,1 +1,5 @@
 @charset "UTF-8";
+*{list-style:none;}
+nav{width:1000px;}
+nav ul{display:flex;}
+nav ul li{width:150px; display:flex; padding:20px;}

@@ -13,7 +13,7 @@
 	String section = request.getParameter("section") != null ? request.getParameter("section") : "";
 		
 	switch(section){
-	case "sale_registration":
+	case "audition_submit":
 		%> <%@ include file="page/audition_submit.jsp" %><%
 		break;
 	case "audition_player_list":
@@ -29,6 +29,6 @@
 		%> <%@ include file="static/index.jsp" %><%
 	}
 	%>
-	<%@ include file="static/footer.jsp" %>
 </body>
+	<%@ include file="static/footer.jsp" %>
 </html>
