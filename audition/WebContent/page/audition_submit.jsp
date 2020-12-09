@@ -1,90 +1,97 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.sql.*" %>
 <h3>오디션 등록</h3>
-<%
-try {
-	Class.forName("oracle.jdbc.OracleDriver");
-	Connection conn = DriverManager.getConnection
-	("jdbc:oracle:thin:@//localhost:1521/xe", "taeseok", "1234");
-	
-	Statement stmt = conn.createStatement();
-	%>
 
-<form action="action/insert.jsp" method="get" name="action_form">
-<table border="1">
-	<tr>
-		<td>참가번호</td>
-		<td>
-		<input type="text" name="player">
-		<b>*참가번호는 (A000)4자리입니다.</b>
-		<%-- <select name="artist_id">
-			<% 
-			String query = "SELECT PRODUCT_ID,NAME FROM PRODUCT";
-		ResultSet rs = stmt.executeQuery(query);
-	 	while(rs.next()){
-	 		%> <option value="<%=rs.getInt(1) %>"><%=rs.getString(2) %><% 
-	 	}
-			%>
-		</select> --%></td>
-	</tr>
-	<tr>
-		<td>수량</td>
-		<td><input type="number" name="amount"></td>
-	</tr>
-	<tr>
-		<td>판매 날짜</td>
-		<td><input type="date" name="purchase_date"></td>
-	</tr>
-	<tr>
-		<td>선택</td>
-		<td>
-			<input type="radio" name="gender" value="male"><a>남</a>
-			<input type="radio" name="genderr" value="female"><a>여</a>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="button" value="등록하기" onclick="submit_form()">
-			<input type="button" value="다시쓰기" onclick="action_form()">
-		</td>
-	</tr>
-</table>
+<form action="action/insert_artist.jsp" name="action_form">
+	<table border="1">
+		<tr>
+			<td>참가번호</td>
+			<td><input type="text" name="artist_id">*참가번호는 (A000) 4자리입니다</td>
+		</tr>
+		<tr>
+			<td>참가자명</td>
+			<td><input type="text" name="artist_name"></td>
+		</tr>
+		<tr>
+			<td>생년월일</td>
+			<td>
+				<input type="number" name="artist_birth_year"> 년
+				<input type="number" name="artist_birth_month"> 월
+				<input type="number" name="artist_birth_day"> 일
+			</td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td>
+				<input type="radio" name="artist_gender" value="M"> 남성
+				<input type="radio" name="artist_gender" value="F"> 여성
+			</td>
+		</tr>
+		<tr>
+			<td>특기</td>
+			<td>
+				<select name="telant">
+					<option value="0">특기선택</option>
+					<option value="1">댄스</option>
+					<option value="2">보컬</option>
+					<option value="3">랩</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>소속사</td>
+			<td><input type="text" name="agency"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="오디션 등록" onclick="submit_form()">
+				<input type="button" value="다시쓰기" onclick="reset_form()">
+			</td>
+		</tr>
+	
+	</table>
 </form>
+
 <script>
-function submit_form(){
-	if(document.action_form.amount.value === ""){
-		alert("수량을 선택해주세요");
-		document.action_form.amount.focus();
+function submit_form() {
+	if (document.action_form.artist_id.value === "") {
+		alert("참가번호가 입력되지 않았습니다!");
+		document.action_form.artist_id.focus();
 		return;
 	}
-	if(document.action_form.purchase_date.value===""){
-		
-	alert("날짜를 입력해주세요");
-	document.action_form.purchase_date.focus();
-	return;
-	}
-	if(document.action_form.product_id.selectedIndex === 0){
-		document.action_form.product_id.focus();
-		alert("판매 상품을 선택하여 주세요");
+	if (document.action_form.artist_name.value === "") {
+		alert("참가자명이 입력되지 않았습니다!");
+		document.action_form.artist_name.focus();
 		return;
 	}
-	alert("등록을 하겠습니다!");
+	if (document.action_form.artist_birth_year.value === "" || 
+			document.action_form.artist_birth_month.value === "" ||
+			document.action_form.artist_birth_day.value === "" ) {
+		alert("생년월일이 입력되지 않았습니다!");
+		document.action_form.artist_birth_year.focus();
+		return;
+	}
+	if (document.action_form.artist_gender.value === "") {
+		alert("성별이 입력되지 않았습니다!");
+		return;
+	}
+	if (document.action_form.telant.selectedIndex === 0) {
+		alert("특기가 입력되지 않았습니다!");
+		return;
+	}
+	if (document.action_form.agency.value === "") {
+		alert("소속사가 입력되지 않았습니다!");
+		document.action_form.agency.focus();
+		return;
+	}
+	
+	alert("참가신청이 정상적으로 등록되었습니다!");
 	document.action_form.submit();
 }
 
-function reset_form(){
-	
+function reset_form() {
+	alert("정보를 지우고 처음부터 다시 입력합니다!");
 	document.action_form.reset();
+	document.action_form.artist_id.focus();
 }
-
 </script>
-<%
-	stmt.close();
-	conn.close();	
-	}
-catch(Exception e){
-	e.printStackTrace();
-}
-
-%>
