@@ -21,15 +21,15 @@ Constraint PKSALELIST PRIMARY KEY(saleno)
 );
 
 
-INSERT INTO tbl_product_01 VALUES('AA01', '아메리카노', 3000);
-INSERT INTO tbl_product_01 VALUES('AA02', '에스프레소', 3500);
-INSERT INTO tbl_product_01 VALUES('AA03', '카페라떼 ',4000);
-INSERT INTO tbl_product_01 VALUES('AA04', '카라멜마끼', 4500);
-INSERT INTO tbl_product_01 VALUES('AA05', '카푸치노 ',5000);
-INSERT INTO tbl_product_01 VALUES('AA06', '초코롤케익', 6000);
-INSERT INTO tbl_product_01 VALUES('AA07', '녹차롤케익', 6500);
-INSERT INTO tbl_product_01 VALUES('AA08', '망고쥬스 ',7000);
-INSERT INTO tbl_product_01 VALUES('AA09', '핫초코 2',500);
+INSERT INTO tbl_product_01 VALUES('AA01','아메리카노',3000);
+INSERT INTO tbl_product_01 VALUES('AA02','에스프레소',3500);
+INSERT INTO tbl_product_01 VALUES('AA03','카페라떼',4000);
+INSERT INTO tbl_product_01 VALUES('AA04','카라멜마끼',4500);
+INSERT INTO tbl_product_01 VALUES('AA05','카푸치노',5000);
+INSERT INTO tbl_product_01 VALUES('AA06','초코롤케익',6000);
+INSERT INTO tbl_product_01 VALUES('AA07','녹차롤케익',6500);
+INSERT INTO tbl_product_01 VALUES('AA08','망고쥬스',7000);
+INSERT INTO tbl_product_01 VALUES('AA09','핫초코',500);
 INSERT INTO tbl_shop_01 VALUES('S001','강남점');
 INSERT INTO tbl_shop_01 VALUES('S002','강서점');
 INSERT INTO tbl_shop_01 VALUES('S003','강동점');
@@ -72,5 +72,4 @@ select shop.scode, shop.sname, sum(product.cost * salelist.amount) from tbl_prod
 				AND shop.scode = salelist.scode
 				GROUP BY shop.scode, shop.sname
 				order by shop.scode;
-
 commit;
